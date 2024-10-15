@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Method Example</title>
+    <style>
+        .box-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;                
+            padding: 40px;             
+            justify-content: center;
+        } 
+        .box {
+            width: 200px;            
+            height: auto;
+            padding: 20px;             
+            background-color: #dce8f9;
+            border: 2px solid #1363d2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #333;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .box1 { background-color: #8e8894; }
+        .box2 { background-color: #ffa500; }
+        .box3 { background-color: #ffff00; }
+        .box4 { background-color: #32cd32; }
+        .box5 { background-color: #1e90ff; }
+    </style>
+</head>
+<body>
+    <div class="box-container">
+        <div class="box box1">"La logica ti porterà da A a B. L'immaginazione ti porterà dappertutto." - Albert Einstein</div>
+        <div class="box box2">"La scienza è un modo di pensare, molto più che un insieme di nozioni." - Carl Sagan</div>
+        <div class="box box3">"Il vero segno dell'intelligenza non è la conoscenza, ma l'immaginazione." - Stephen Hawking</div>
+        <div class="box box4">"La misura dell'intelligenza è la capacità di cambiare." - Albert Einstein</div>
+    </div>
+</body>
+</html>

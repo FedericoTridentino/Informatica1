@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolo Dislivello Trekking</title>
+</head>
+<body>
+    <h2>Calcolo del Dislivello per il Trekking</h2>
+
+    <label for="startHeight">Altezza punto di partenza (in metri):</label>
+    <input type="number" id="startHeight" placeholder="Es. 500"><br><br>
+
+    <label for="endHeight">Altezza punto di arrivo (in metri):</label>
+    <input type="number" id="endHeight" placeholder="Es. 1200"><br><br>
+
+    <button onclick="calcolaDislivello()">Calcola Dislivello</button>
+
+    <h3>Risultato:</h3>
+    <p id="output"></p>
+
+    <script>
+        function calcolaDislivello() {
+            // Ottieni i valori di altezza di partenza e arrivo dagli input
+            let startHeight = document.getElementById("startHeight").value;
+            let endHeight = document.getElementById("endHeight").value;
+
+            // Converte i valori in numeri
+            startHeight = parseFloat(startHeight);
+            endHeight = parseFloat(endHeight);
+
+            // Controlla che i valori siano numerici e validi
+            if (isNaN(startHeight) || isNaN(endHeight)) {
+                document.getElementById("output").innerText = "Inserisci valori numerici validi per entrambi i campi.";
+                return;
+            }
+
+            // Calcola il dislivello
+            let dislivello = endHeight - startHeight;
+
+            // Mostra il risultato
+            document.getElementById("output").innerText = `Altezza di partenza: ${startHeight} m, Altezza di arrivo: ${endHeight} m. \nDislivello totale: ${dislivello} m.`;
+        }
+    </script>
+</body>
+</html>

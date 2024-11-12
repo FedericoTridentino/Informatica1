@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatore Decrementale</title>
+    <style>
+        #contenitore {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Contatore Decrementale</h1>
+
+<div id="contenitore">Contatore: <span id="decrementale">10</span></div>
+<button onclick="iniziaDecremento()">Inizia Contatore</button>
+
+<script>
+    function iniziaDecremento() {
+        let contatore = 10;
+        const decrementaleSpan = document.getElementById("decrementale");
+
+        const decremento = setInterval(() => {
+            decrementaleSpan.textContent = contatore;
+            contatore--;
+
+            if (contatore < 0) {
+                clearInterval(decremento);
+            }
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
+

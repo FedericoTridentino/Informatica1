@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aforismi di Scienziati</title>
+    <style>
+        .aforisma {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-width: 600px;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Aforismi di Scienziati</h1>
+
+<div class="aforisma">
+    <p id="aforisma1">"La scienza è un modo di pensare, molto più che un insieme di conoscenze." - Carl Sagan</p>
+    <button onclick="nascondiTesto('aforisma1')">Nascondi Testo</button>
+</div>
+
+<div class="aforisma">
+    <p id="aforisma2">"La misura dell'intelligenza è la capacità di cambiare." - Albert Einstein</p>
+    <button onclick="nascondiTesto('aforisma2')">Nascondi Testo</button>
+</div>
+
+<div class="aforisma">
+    <p id="aforisma3">"Niente nella vita va temuto, deve solo essere compreso. Ora è il momento di comprendere di più, per temere di meno." - Marie Curie</p>
+    <button onclick="nascondiTesto('aforisma3')">Nascondi Testo</button>
+</div>
+
+<div class="aforisma">
+    <p id="aforisma4">"Le domande non sono mai indiscrete. Le risposte lo sono a volte." - Oscar Wilde</p>
+    <button onclick="nascondiTesto('aforisma4')">Nascondi Testo</button>
+</div>
+
+<div class="aforisma">
+    <p id="aforisma5">"Se ho visto più lontano, è perché stavo sulle spalle dei giganti." - Isaac Newton</p>
+    <button onclick="nascondiTesto('aforisma5')">Nascondi Testo</button>
+</div>
+
+<script>
+function nascondiTesto(id) {
+    const testo = document.getElementById(id);
+    testo.style.display = "none"; 
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatore Decrementale</title>
+    <style>
+        button { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Countdown</h1>
+    <p id="counter">100.00</p>
+    <button id="stopButton">Premi quando arriva a 90, 80, 70, 60 fino a 10 </button>
+    <p id="difference"></p>
+    <p id="totalDifference"></p>
+
+    <script>
+        let counter = 100.00;
+        let interval;
+        let totalDifference = 0;
+        const optimalTimes = [90.00, 80.00, 70.00, 60.00, 50.00, 40.00, 30.00, 20.00, 10.00, 0.00];
+        let currentOptimalIndex = 0;
+
+        function updateCounter() {
+            counter -= 0.01;
+            document.getElementById('counter').innerText = counter.toFixed(2);
+        }
+
+        document.getElementById('stopButton').addEventListener('click', () => {
+            const optimalTime = optimalTimes[currentOptimalIndex];
+            const currentTime = counter.toFixed(2);
+            const diff = (optimalTime - parseFloat(currentTime)).toFixed(2);
+            totalDifference += parseFloat(diff);
+
+            document.getElementById('difference').innerText = `Differenza per ${optimalTime}s: ${diff}s`;
+            document.getElementById('totalDifference').innerText = `Somma delle differenze: ${totalDifference.toFixed(2)}s`;
+
+            currentOptimalIndex++;
+
+            if (counter <= 0.00) {
+                clearInterval(interval);
+            }
+        });
+
+        interval = setInterval(updateCounter, 10);
+    </script>
+</body>
+</html>

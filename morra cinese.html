@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta, Sasso, Forbice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        #risultato {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Carta, Sasso, Forbice</h1>
+    <p>Scegli una delle opzioni per giocare!</p>
+
+    <button onclick="gioca('Carta')">Carta</button>
+    <button onclick="gioca('Sasso')">Sasso</button>
+    <button onclick="gioca('Forbice')">Forbice</button>
+
+    <div id="risultato"></div>
+
+    <script>
+        const opzioni = ["Carta", "Sasso", "Forbice"];
+
+  
+        function sceltaCasuale() {
+            return opzioni[Math.floor(Math.random() * opzioni.length)];
+        }
+        function determinaVincitore(giocatore, computer) {
+            if (giocatore === computer) {
+                return "Pareggio!";
+            }
+            if (
+                (giocatore === "Carta" && computer === "Sasso") ||
+                (giocatore === "Sasso" && computer === "Forbice") ||
+                (giocatore === "Forbice" && computer === "Carta")
+            ) {
+                return "Hai vinto!";
+            }
+            return "Hai perso!";
+        }
+
+        function gioca(sceltaGiocatore) {
+            const sceltaComputer = sceltaCasuale();
+            const risultato = determinaVincitore(sceltaGiocatore, sceltaComputer);
+
+          
+            document.getElementById("risultato").innerHTML = `
+                <p>Hai scelto: <strong>${sceltaGiocatore}</strong></p>
+                <p>Il computer ha scelto: <strong>${sceltaComputer}</strong></p>
+                <p>${risultato}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

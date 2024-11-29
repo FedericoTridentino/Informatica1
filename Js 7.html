@@ -4,24 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calcolo Età</title>
+    <style>
+        /* Aggiungi un colore di sfondo */
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container principale */
+        .container {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+    </style>
 </head>
 <body>
-    <h1>Benvenuto!</h1>
-    <p>Inserisci il tuo nome e la tua data di nascita per scoprire da quanto tempo sei in vita:</p>
+    <div class="container">
+        <h1>Benvenuto!</h1>
+        <p>Inserisci il tuo nome e la tua data di nascita per scoprire da quanto tempo sei in vita:</p>
 
-    <form id="userForm">
-        <label for="name">Nome:</label>
-        <input type="text" id="name" required>
-        <br><br>
+        <form id="userForm">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" placeholder="Inserisci il tuo nome" required>
 
-        <label for="birthdate">Data di nascita:</label>
-        <input type="date" id="birthdate" required>
-        <br><br>
+            <label for="birthdate">Data di nascita:</label>
+            <input type="date" id="birthdate" required>
 
-        <button type="submit">Calcola Età</button>
-    </form>
+            <button type="submit">Calcola Età</button>
+        </form>
 
-    <h2 id="result"></h2>
+        <h2 id="result"></h2>
+    </div>
 
     <script>
         document.getElementById("userForm").addEventListener("submit", function(event) {

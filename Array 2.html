@@ -22,7 +22,7 @@
 </head>
 <body>
     <h1>Test della funzione getElement</h1>
-    <p>Array: <code>["rock", "paper", "scissors"]</code></p>
+    <p>Array: <code>["sasso", "carta", "forbice"]</code></p>
     <label for="index">Inserisci un indice:</label>
     <input type="number" id="index" placeholder="Es: 0" />
     <button onclick="testElement()">Mostra elemento</button>
@@ -30,7 +30,7 @@
 
     <script>
         function getElement(index) {
-            const morra = ["rock", "paper", "scissors"];
+            const morra = ["sasso", "carta", "forbice"];
             if (index < 0 || index >= morra.length) {
                 return "Indice non valido";
             }

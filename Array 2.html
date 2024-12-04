@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test getElement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        input, button {
+            margin: 10px;
+            padding: 5px 10px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test della funzione getElement</h1>
+    <p>Array: <code>["rock", "paper", "scissors"]</code></p>
+    <label for="index">Inserisci un indice:</label>
+    <input type="number" id="index" placeholder="Es: 0" />
+    <button onclick="testElement()">Mostra elemento</button>
+    <p id="result"></p>
+
+    <script>
+        function getElement(index) {
+            const morra = ["rock", "paper", "scissors"];
+            if (index < 0 || index >= morra.length) {
+                return "Indice non valido";
+            }
+            return morra[index];
+        }
+
+        function testElement() {
+            const indexInput = document.getElementById("index").value;
+            const index = parseInt(indexInput, 10);
+
+            if (isNaN(index)) {
+                document.getElementById("result").textContent = "Inserisci un numero valido!";
+                return;
+            }
+
+            const result = getElement(index);
+            document.getElementById("result").textContent = result;
+        }
+    </script>
+</body>
+</html>

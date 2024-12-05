@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gioco: Lista Nemici</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #ffcccc;
+            border: 1px solid #ff6666;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .generate-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .remove-btn {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gioco: Lista Nemici</h1>
+    <ul id="listaNemici"></ul>
+    <div>
+        <button class="generate-btn" onclick="generaNemico()">Genera Nemico</button>
+        <button class="remove-btn" onclick="sconfiggiNemico()">Sconfiggi Ultimo Nemico</button>
+    </div>
+
+    <script>
+        const nemiciPossibili = ["Orco", "Goblin", "Drago", "Troll", "Vampiro"];
+        let listaNemici = [];
+
+        function generaNemico() {
+            const indiceCasuale = Math.floor(Math.random() * nemiciPossibili.length);
+            const nuovoNemico = nemiciPossibili[indiceCasuale];
+            listaNemici.push(nuovoNemico);
+            aggiornaLista();
+        }
+
+        function sconfiggiNemico() {
+            if (listaNemici.length > 0) {
+                const nemicoRimosso = listaNemici.pop();
+                alert(`Hai sconfitto: ${nemicoRimosso}`);
+                aggiornaLista();
+            } else {
+                alert("Non ci sono nemici da sconfiggere!");
+            }
+        }
+
+        function aggiornaLista() {
+            const listaUl = document.getElementById("listaNemici");
+            listaUl.innerHTML = "";
+
+            listaNemici.forEach((nemico) => {
+                const li = document.createElement("li");
+                li.textContent = nemico;
+                listaUl.appendChild(li);
+            });
+        }
+    </script>
+
+</body>
+</html>

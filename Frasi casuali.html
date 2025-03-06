@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generatore di Frasi</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h1 { color: #333; }
+    p { background: #f4f4f4; padding: 10px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Prime 100 Frasi Generate</h1>
+  <div id="output"></div>
+
+  <script>
+    let soggetti = [
+      "Il gatto di Luca", 
+      "Una maestra gentile", 
+      "Un astronauta curioso", 
+      "Un robot intelligente", 
+      "Un bambino felice", 
+      "Un dottore esperto", 
+      "Una ragazza coraggiosa", 
+      "Un cuoco talentuoso", 
+      "Un inventore geniale", 
+      "Un musicista famoso"
+    ];
+
+    let verbi = [
+      "scopre un'isola misteriosa", 
+      "scrive una storia fantastica", 
+      "dipinge un quadro bellissimo", 
+      "insegna a ballare", 
+      "salva un animale ferito", 
+      "canta una canzone emozionante", 
+      "costruisce un'astronave", 
+      "inventa un nuovo gioco", 
+      "cucina un piatto delizioso", 
+      "legge un libro avventuroso"
+    ];
+
+    let complemento = [
+      "con i suoi migliori amici", 
+      "mentre piove a dirotto", 
+      "per un concorso importante", 
+      "in un castello abbandonato", 
+      "con grande entusiasmo", 
+      "sotto gli occhi di tutti", 
+      "davanti a una platea emozionata", 
+      "per sorprendere sua nonna", 
+      "durante un viaggio intorno al mondo", 
+      "nella sua cameretta"
+    ];
+
+    // Funzione per generare combinazioni limitate a un massimo specificato
+    function generaCombinazioni(soggetti, verbi, complemento, max) {
+      let combinazioni = [];
+      let count = 0;
+
+      for (let soggetto of soggetti) {
+        for (let verbo of verbi) {
+          for (let compl of complemento) {
+            combinazioni.push(`${soggetto} ${verbo} ${compl}`);
+            count++;
+            if (count >= max) {
+              return combinazioni;
+            }
+          }
+        }
+      }
+      return combinazioni;
+    }
+
+    // Genera solo le prime 100 combinazioni
+    let prime100Combinazioni = generaCombinazioni(soggetti, verbi, complemento, 100);
+
+    // Mostra le frasi sulla pagina web una volta che il DOM è caricato
+    document.addEventListener("DOMContentLoaded", function() {
+      let output = document.getElementById("output");
+      output.innerHTML = prime100Combinazioni.map(frase => `<p>${frase}</p>`).join("");
+    });
+  </script>
+</body>
+</html>
+
+

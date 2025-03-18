@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Stringhe</title>
+</head>
+<body>
+    <h2>Inserisci due stringhe</h2>
+    <input type="text" id="stringaA" placeholder="Stringa A">
+    <input type="text" id="stringaB" placeholder="Stringa B">
+    <button onclick="calcola()">Calcola</button>
+    
+    <h3>Risultati:</h3>
+    <p id="lunghezze"></p>
+    <p id="invertite"></p>
+    <p id="concatenata"></p>
+    <p id="sommaLunghezze"></p>
+
+    <script>
+        function calcola() {
+            let a = document.getElementById("stringaA").value;
+            let b = document.getElementById("stringaB").value;
+
+            
+            let lunghezzaA = a.length;
+            let lunghezzaB = b.length;
+
+           
+            let invertitaA = a.split("").reverse().join("");
+            let invertitaB = b.split("").reverse().join("");
+
+            let concatenata = a + b;
+
+            let sommaLunghezze = lunghezzaA + lunghezzaB;
+            let messaggio = (lunghezzaB > 20) ? "b troppo lunga!" : "";
+
+            document.getElementById("lunghezze").innerText = `Lunghezze: A = ${lunghezzaA}, B = ${lunghezzaB}`;
+            document.getElementById("invertite").innerText = `Invertite: A = ${invertitaA}, B = ${invertitaB}`;
+            document.getElementById("concatenata").innerText = `Concatenata: ${concatenata}`;
+            document.getElementById("sommaLunghezze").innerText = `Somma delle lunghezze: ${sommaLunghezze} ${messaggio}`;
+        }
+    </script>
+</body>
+</html>

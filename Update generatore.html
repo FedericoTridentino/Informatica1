@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numeri Casuali con Grafico</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #output {
+      margin-top: 20px;
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      white-space: pre-wrap;
+    }
+    canvas {
+      max-width: 100%;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Generatore di Numeri Casuali (0-1)</h1>
+  <button onclick="startGenerazione()">Inizia Generazione</button>
+  <div id="output"></div>
+  <canvas id="graficoNumeri" height="100"></canvas>
+
+  <script>
+    let ArrayNumeriCasuali = [];
+    let arrayRapporti = [];
+    let arrayDistanze = [];
+    let medieArray = [];
+    let outputText = "";
+    let intervallo = null;
+
+    // Inizializza il grafico Chart.js
+    const ctx = document.getElementById('graficoNumeri').getContext('2d');
+    const grafico = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'Numeri Casuali',
+          data: [],
+          borderColor: 'blue',
+          tension: 0.2,
+          pointRadius: 0,
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            min: 0,
+            max: 1,
+            title: { display: true, text: 'Valore' }
+          },
+          x: {
+            title: { display: true, text: 'Indice' }
+          }
+        }
+      }
+    });
+
+    function startGenerazione() {
+      clearInterval(intervallo);
+      ArrayNumeriCasuali = [];
+      arrayRapporti = [];
+      arrayDistanze = [];
+      medieArray = [];
+      outputText = "";
+      grafico.data.labels = [];
+      grafico.data.datasets[0].data = [];
+      grafico.update();
+      document.getElementById("output").textContent = "";
+
+      intervallo = setInterval(generaNumero, 500);
+    }
+
+    function generaNumero() {
+      const min = 0.0;
+      const max = 1.0;
+      const numeroCasuale = parseFloat((Math.random() * (max - min) + min).toFixed(4));
+      const i = ArrayNumeriCasuali.length;
+      ArrayNumeriCasuali.push(numeroCasuale);
+
+      // Calcola rapporto
+      if (i > 0) {
+        const rapporto = parseFloat((numeroCasuale / ArrayNumeriCasuali[i - 1]).toFixed(4));
+        arrayRapporti.push(rapporto);
+      }
+
+      // Distanza da 0.5
+      const distanza = parseFloat(Math.abs(numeroCasuale - 0.5).toFixed(4));
+      arrayDistanze.push(distanza);
+
+      // Media ogni 50
+      if ((i + 1) % 50 === 0) {
+        const ultimi50 = ArrayNumeriCasuali.slice(i - 49, i + 1);
+        const media = parseFloat((ultimi50.reduce((acc, val) => acc + val, 0) / 50).toFixed(4));
+        medieArray.push(media);
+        outputText += `Numeri: ${ultimi50.join(" ")}\nMedia: ${media}\n\n`;
+        document.getElementById("output").textContent = outputText;
+      }
+
+      // Aggiorna grafico
+      grafico.data.labels.push(i.toString());
+      grafico.data.datasets[0].data.push(numeroCasuale);
+      grafico.update();
+
+      if (ArrayNumeriCasuali.length >= 1000) {
+        clearInterval(intervallo);
+        console.log("Generazione completata.");
+        console.log("Array Numeri:", ArrayNumeriCasuali);
+        console.log("Array Rapporti:", arrayRapporti);
+        console.log("Array Distanze:", arrayDistanze);
+        console.log("Medie:", medieArray);
+      }
+    }
+  </script>
+</body>
+</html>

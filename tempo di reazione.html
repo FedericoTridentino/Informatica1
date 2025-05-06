@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Gioco Tempo di Reazione </title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    #gameArea {
+      position: relative;
+      width: 600px;
+      height: 400px;
+      margin: 20px auto;
+      border: 2px solid #000;
+      background-color: #f0f0f0;
+      overflow: hidden;
+    }
+    .shape {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+    }
+    .circle {
+      border-radius: 50%;
+    }
+    .square {
+      border-radius: 0;
+    }
+    #result, #times {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gioco Forma + Colore</h1>
+  <label for="color">Scegli il colore:</label>
+  <select id="color">
+    <option value="red">Rosso</option>
+    <option value="green">Verde</option>
+    <option value="blue">Blu</option>
+    <option value="yellow">Giallo</option>
+  </select>
+  <label for="shape">Scegli la forma:</label>
+  <select id="shape">
+    <option value="circle">Cerchio</option>
+    <option value="square">Quadrato</option>
+  </select>
+  <button onclick="startGame()">Inizia</button>
+
+  <div id="gameArea"></div>
+  <div id="result"></div>
+  <div id="times"></div>
+
+  <script>
+    const colors = ["red", "green", "blue", "yellow"];
+    const shapes = ["circle", "square"];
+    let userColor = "";
+    let userShape = "";
+    let reactionTimes = [];
+    let startTime;
+    let gameInterval;
+
+    function startGame() {
+      userColor = document.getElementById("color").value;
+      userShape = document.getElementById("shape").value;
+      document.getElementById("result").textContent = "Gioco iniziato! Clicca solo le forme giuste.";
+      document.getElementById("times").textContent = "";
+      reactionTimes = [];
+      clearInterval(gameInterval);
+      gameInterval = setInterval(showShapes, 2000);
+    }
+
+    function showShapes() {
+      const gameArea = document.getElementById("gameArea");
+      gameArea.innerHTML = "";
+      startTime = new Date().getTime();
+
+      for (let i = 0; i < 5; i++) {
+        const shape = document.createElement("div");
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
+
+        shape.classList.add("shape", shapeType);
+        shape.style.backgroundColor = color;
+        shape.style.left = Math.random() * 550 + "px";
+        shape.style.top = Math.random() * 350 + "px";
+
+        shape.onclick = function () {
+          if (color === userColor && shapeType === userShape) {
+            const endTime = new Date().getTime();
+            const reaction = ((endTime - startTime) / 1000).toFixed(2);
+            reactionTimes.push(reaction);
+            alert(`Giusto! Tempo di reazione: ${reaction}s`);
+          } else {
+            alert("Sbagliato!");
+          }
+        };
+
+        gameArea.appendChild(shape);
+      }
+    }
+  </script>
+</body>
+</html>

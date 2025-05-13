@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Gioco con JSON</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 20px; }
+    #gameArea { width: 400px; height: 400px; border: 2px solid black; margin: 20px auto; position: relative; background: #f0f0f0; }
+    .shape { width: 50px; height: 50px; position: absolute; cursor: pointer; }
+    .circle { border-radius: 50%; }
+    .square { border-radius: 0; }
+    pre { background: #eee; padding: 10px; margin-top: 20px; text-align: left; max-width: 600px; margin: auto; }
+  </style>
+</head>
+<body>
+
+  <h1>Gioco Reazione + JSON</h1>
+
+  <label>Nome giocatore: <input id="giocatore" value="Mario" /></label><br><br>
+  <select id="colore">
+    <option value="red">Rosso</option>
+    <option value="blue">Blu</option>
+  </select>
+  <select id="forma">
+    <option value="circle">Cerchio</option>
+    <option value="square">Quadrato</option>
+  </select>
+  <button onclick="startGame()">Inizia</button>
+  <button onclick="fineGioco()">Fine gioco (mostra JSON)</button>
+
+  <div id="gameArea"></div>
+  <div id="messaggio"></div>
+
+  <pre id="jsonOutput"></pre>
+
+  <script>
+    const colors = ["red", "blue"];
+    const shapes = ["circle", "square"];
+    let startTime, interval;
+    let tempi = [];
+
+    let coloreScelto, formaScelta, nomeGiocatore;
+
+    function startGame() {
+      nomeGiocatore = document.getElementById("giocatore").value;
+      coloreScelto = document.getElementById("colore").value;
+      formaScelta = document.getElementById("forma").value;
+      tempi = [];
+      clearInterval(interval);
+      interval = setInterval(mostraForma, 2000);
+    }
+
+    function mostraForma() {
+      const area = document.getElementById("gameArea");
+      area.innerHTML = "";
+
+      const forma = document.createElement("div");
+      const colore = colors[Math.floor(Math.random() * colors.length)];
+      const tipo = shapes[Math.floor(Math.random() * shapes.length)];
+
+      forma.classList.add("shape", tipo);
+      forma.style.backgroundColor = colore;
+      forma.style.left = Math.random() * 350 + "px";
+      forma.style.top = Math.random() * 350 + "px";
+
+      forma.onclick = () => {
+        const tempo = ((Date.now() - startTime) / 1000).toFixed(2);
+        if (colore === coloreScelto && tipo === formaScelta) {
+          tempi.push(parseFloat(tempo));
+          document.getElementById("messaggio").textContent = `Giusto! Tempo: ${tempo}s`;
+        } else {
+          document.getElementById("messaggio").textContent = "Sbagliato!";
+        }
+        area.innerHTML = "";
+      };
+
+      area.appendChild(forma);
+      startTime = Date.now();
+
+      setTimeout(() => { area.innerHTML = ""; }, 1900);
+    }
+
+    function fineGioco() {
+      clearInterval(interval);
+      const media = tempi.length > 0 ? (tempi.reduce((a, b) => a + b, 0) / tempi.length).toFixed(2) : "N/D";
+
+      const datiGiocatore = {
+        nome: nomeGiocatore,
+        colore: coloreScelto,
+        forma: formaScelta,
+        tempi: tempi,
+        media: media,
+        totaleTentativi: tempi.length
+      };
+
+      const json = JSON.stringify(datiGiocatore, null, 2);
+      localStorage.setItem("giocoJSON", json); // lo salva
+      document.getElementById("jsonOutput").textContent = json; // lo mostra
+    }
+  </script>
+
+</body>
+</html>

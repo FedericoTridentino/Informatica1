@@ -6,7 +6,6 @@
   <title>Ristorante Hotel - Capolavoro Unico</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-    /* Global Styles */
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -15,7 +14,6 @@
       color: #ecf0f1;
       text-align: center;
     }
-    /* Barra di navigazione globale: solo Home e Menu */
     nav {
       background-color: #34495e;
       padding: 10px;
@@ -35,10 +33,9 @@
     nav a:hover {
       text-decoration: underline;
     }
-    /* Gestione delle "pagine" */
     .page {
       display: none;
-      padding-top: 70px; /* per evitare che la nav copra il contenuto */
+      padding-top: 70px; 
     }
     .active-page {
       display: block;
@@ -52,12 +49,9 @@
     h1, h2, h3 {
       color: #f1c40f;
     }
-    /* HOME: Esattamente come nel codice originale */
-    -– Il contenuto della Home rimane invariato ––>
-    /* (Nota: il bottone "Menu" in più è stato rimosso) */
     .sponsor {
       margin-top: 20px;
-      font-size: 1.5em;
+      font-size: 2em;
       background-color: #34749e;
       padding: 15px;
       display: inline-block;
@@ -90,7 +84,6 @@
       from { opacity: 0; }
       to { opacity: 1; }
     }
-    /* MENU Page Styles */
     .menu-title {
       font-size: 2.5em;
       font-weight: 700;
@@ -164,7 +157,6 @@
       margin: 20px auto;
       display: block;
     }
-    /* Detail Pages Styles (Colazione, Pranzo, Merenda, Cena) */
     .detail-container {
       max-width: 800px;
       margin: auto;
@@ -174,49 +166,98 @@
       font-size: 1.1em;
       line-height: 1.6;
     }
+    .welcome {
+      color: #f1c40f;
+      font-size: 2.8em;
+      margin: 20px 0;
+    }
   </style>
 </head>
 <body>
-  <!-- Barra di navigazione globale: solo Home e Menu -->
   <nav>
     <a href="#" onclick="showPage('home')">Home</a>
-    <a href="#" onclick="showPage('menu')">Menu</a>
+    <!-- Bottone esterno rinominato in "Menu" -->
+    <a href="https://amirouazzan1.github.io/INFORMATICA/menu.html" target="_blank">Menu</a>
+    <!-- Bottone interno rinominato in "Menu dettagliato" -->
+    <a href="#" onclick="showPage('menu')">Menu dettagliato</a>
   </nav>
-  
-  <!-- HOME: Contenuto originale INVARIATO (tutto centrato) -->
+
   <section id="home" class="page active-page">
     <div class="container">
-        <div class="welcome">Siamo lieti di darvi il benvenuto all'Hotel Villa del Golfo</div>
-        <div class="sponsor">Since 1967, Napoli</div>
-        <div class="gallery">
-            <img src="https://davidebisceglie.github.io/davidebisceglie/logo.jpg" alt="Logo">
-        </div>
+      <div class="welcome">Siamo lieti di darvi il benvenuto all'Hotel Villa del Golfo</div>
+      <div class="sponsor">Since 1967, Napoli</div>
+      <div class="gallery">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/logo.jpg" alt="Logo">
+      </div>
     </div>
+    <!-- Altri contenuti della home... -->
     <div id="chi-siamo" class="container">
-        <h2>Chi Siamo</h2>
-        <p>Un ristorante elegante con piatti raffinati e ingredienti di alta qualità.</p>
+      <h2>Chi Siamo</h2>
+      <p>Immerso nel cuore di Napoli, Villa del Golfo è un elegante rifugio affacciato sul mare, dove charme e comfort si incontrano per offrire un’esperienza indimenticabile. Con camere raffinate, un’accoglienza calorosa e una vista mozzafiato sul Golfo, il nostro hotel è il luogo ideale per chi desidera scoprire la bellezza autentica della città, tra storia, cultura e relax. Che si tratti di un soggiorno romantico, di un viaggio d'affari o di una vacanza in famiglia, presso Villa del Golfo troverete un’ospitalità senza pari, nel cuore della meravigliosa Napoli.</p>
     </div>
     <div id="foto" class="container">
-        <h2>Foto</h2>
-        <p>Guarda le nostre specialità e l'ambiente accogliente.</p>
-        <div class="gallery">
-            <img src="https://via.placeholder.com/300x200" alt="Piatto 1">
-            <img src="https://via.placeholder.com/300x200" alt="Piatto 2">
-            <img src="https://via.placeholder.com/300x200" alt="Interno Ristorante">
-        </div>
+      <h2>Foto</h2>
+      <p>Scopri le nostre specialità e il nostro ristorante.</p>
+      <div class="gallery">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/piatto1.jpg" alt="Piatto 1">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/piatto2.jpg" alt="Piatto 2">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/ristorante.jpg" alt="Interno Ristorante">
+      </div>
     </div>
     <div id="location" class="container">
-        <h2>Location</h2>
-        <p>Ci trovi in via Maniscalchi 69, per un soggiorno indimenticabile</p>
+      <h2>Location</h2>
+      <p>Ci trovi in <strong>via Maniscalchi 69</strong>, nel cuore di Napoli, una posizione strategica che ti permette di vivere la città al meglio. Soggiornando da noi, sarai a pochi passi dalle meraviglie storiche, dai sapori autentici della tradizione e dalle atmosfere vibranti che rendono Napoli unica. Un punto di partenza ideale per esplorare la città e goderti un’esperienza indimenticabile.</p>
+      <div class="gallery">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/napoli1.jpg" alt="Napoli 1">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/napoli2.jpg" alt="Napoli 2">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/hotel.jpg" alt="Hotel">
+      </div>
+    </div>
+    <div id="camere" class="container">
+      <h2>Camere</h2>
+      <p>Le camere del nostro hotel offrono il massimo del comfort e dell’eleganza, pensate per soddisfare ogni tipo di ospite. Dalle accoglienti camere singole, perfette per chi viaggia da solo, alle spaziose suite, ideali per chi cerca lusso e relax.
+         Per le famiglie, disponiamo di camere triple, quadruple e family, con ampi spazi e soluzioni su misura. Gli ospiti business possono scegliere le nostre camere executive, dotate di scrivania e servizi dedicati.
+         Tutte le camere sono arredate con stile, offrono connessione Wi-Fi gratuita, TV satellitare, minibar e bagno privato. Alcune vantano una splendida vista panoramica sulla città o sul mare, per rendere il soggiorno ancora più speciale.
+         Prenota la tua camera e vivi un’esperienza indimenticabile!
+      </p>
+      <div class="gallery">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/camera1.jpg" alt="Camera 1">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/camera2.jpg" alt="Camera 2">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/camera3.jpg" alt="Camera 3">
+      </div>
+    </div>
+    <div id="servizi" class="container">
+      <h2>Servizi</h2>
+      <p>Con noi, Napoli non è solo una destinazione, ma un'esperienza da vivere a 360°. Regalati un’avventura indimenticabile con le nostre esclusive attività all’aperto: salpa per una suggestiva <strong>gita in barca nel Golfo di Napoli</strong>, esplorando le meravigliose isole di Capri e Ischia, oppure <strong>immergiti nelle acque cristalline per scoprire i fondali di Baia e Posillipo</strong> con immersioni e snorkeling mozzafiato. Se ami la natura, potrai affrontare <strong>un’escursione sul Vesuvio o percorrere sentieri panoramici nei parchi naturali della Campania</strong>. Per i buongustai, organizziamo <strong>degustazioni enogastronomiche nelle migliori cantine della regione</strong>, dove potrai assaporare vini e prodotti tipici. Ogni esperienza è pensata per farti vivere Napoli in modo autentico</p>
+      <div class="gallery">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/servizi1.jpg" alt="Servizi 1">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/servizi2.jpg" alt="Servizi 2">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/servizi3.jpg" alt="Servizi 3">
+      </div>
+    </div>
+    <div id="pet friendly" class="container">
+      <h2>Pet Friendly</h2>
+      <p>Nel nostro hotel, gli animali domestici sono ospiti speciali. Offriamo un’accoglienza pet-friendly con spazi dedicati, comfort su misura e tutto il necessario per rendere il soggiorno piacevole anche per loro. Porta con te il tuo fedele amico e vivi Napoli senza rinunce!</p>
+      <div class="gallery">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/pet1.jpg" alt="Pet 1">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/pet4.jpg" alt="Pet 2">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/pet2.jpg" alt="Pet 3">
+      </div>
+    </div>
+    <div id="spa" class="container">
+      <h2>Servizio SPA</h2>
+      <p>Rilassati e rigenera corpo e mente nella nostra esclusiva SPA, dove le benefiche acque termali della zona ti avvolgeranno in un’esperienza di puro benessere. Grazie alle proprietà curative delle sorgenti naturali, potrai godere di trattamenti termali, bagni rilassanti e percorsi benessere pensati per il massimo del relax. Un'oasi di tranquillità nel cuore di Napoli, dove la natura incontra il lusso</p>
+      <div class="gallery">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/spa1.jpg" alt="spa 1">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/spa2.jpg" alt="spa 2">
+        <img src="https://davidebisceglie.github.io/davidebisceglie/spa3.jpg" alt="spa 3">
+      </div>
     </div>
   </section>
-  
-  <!-- MENU: Sezione con collapsible per ogni pasto -->
+
   <section id="menu" class="page">
     <div class="container">
       <div class="menu-title">Il Nostro Menu Dettagliato</div>
-      
-      <!-- COLAZIONE -->
       <button class="collapsible">Colazione - 320 kcal</button>
       <div class="content">
         <div class="meal-section">
@@ -228,13 +269,12 @@
           </ul>
           <h3>Succo d’arancia rossa di Sicilia</h3>
           <ul>
-            <li>Arance rosse fresche: 250ml (120 kcal)</li>
+            <li8>Arance rosse fresche: 250ml (120 kcal)</li>
           </ul>
+          <img src="https://davidebisceglie.github.io/davidebisceglie/colazione.jpg" alt="Colazione">
           <a class="learn-more" href="#" onclick="showPage('colazione')">Scopri di più</a>
         </div>
       </div>
-      
-      <!-- PRANZO -->
       <button class="collapsible">Pranzo - 895 kcal</button>
       <div class="content">
         <div class="meal-section">
@@ -253,11 +293,10 @@
             <li>Vino bianco: 30ml (25 kcal)</li>
             <li>Scarola ripassata: 150g (35 kcal)</li>
           </ul>
+          <img src="https://davidebisceglie.github.io/davidebisceglie/pranzo.jpg" alt="Pranzo">
           <a class="learn-more" href="#" onclick="showPage('pranzo')">Scopri di più</a>
         </div>
       </div>
-      
-      <!-- MERENDA -->
       <button class="collapsible">Merenda - 160 kcal</button>
       <div class="content">
         <div class="meal-section">
@@ -267,11 +306,10 @@
             <li>Zucchero di canna: 15g (60 kcal)</li>
             <li>Mandorle tritate: 10g (60 kcal)</li>
           </ul>
+          <img src="https://davidebisceglie.github.io/davidebisceglie/merenda.jpg" alt="Merenda">
           <a class="learn-more" href="#" onclick="showPage('merenda')">Scopri di più</a>
         </div>
       </div>
-      
-      <!-- CENA -->
       <button class="collapsible">Cena - 1140 kcal</button>
       <div class="content">
         <div class="meal-section">
@@ -290,20 +328,19 @@
             <li>Olio extravergine di oliva: 10g (90 kcal)</li>
             <li>Pane di semola tostato: 30g (80 kcal)</li>
           </ul>
+          <img src="https://davidebisceglie.github.io/davidebisceglie/cena.jpg" alt="Cena" style="display:block;">
+          <img src="https://davidebisceglie.github.io/davidebisceglie/cena2.jpg" alt="Cena2" style="display:block;">
           <a class="learn-more" href="#" onclick="showPage('cena')">Scopri di più</a>
         </div>
+        <div class="summary">
+          <p><strong>Totale giornaliero:</strong> circa 2600 kcal</p>
+          <p><strong>Prezzo medio:</strong> 65-70€</p>
+        </div>
+        <button class="back-button" onclick="showPage('home')">Torna alla Home</button>
       </div>
-      
-      <div class="summary">
-        <p><strong>Totale giornaliero:</strong> circa 2600 kcal</p>
-        <p><strong>Prezzo medio:</strong> 65-70€</p>
-      </div>
-      
-      <button class="back-button" onclick="showPage('home')">Torna alla Home</button>
     </div>
   </section>
-  
-  <!-- COLAZIONE DETAIL -->
+
   <section id="colazione" class="page">
     <div class="detail-container">
       <h1>Colazione</h1>
@@ -323,8 +360,7 @@
       <button class="back-button" onclick="showPage('menu')">Torna al Menù</button>
     </div>
   </section>
-  
-  <!-- PRANZO DETAIL -->
+
   <section id="pranzo" class="page">
     <div class="detail-container">
       <h1>Pranzo</h1>
@@ -344,8 +380,7 @@
       <button class="back-button" onclick="showPage('menu')">Torna al Menù</button>
     </div>
   </section>
-  
-  <!-- MERENDA DETAIL -->
+
   <section id="merenda" class="page">
     <div class="detail-container">
       <h1>Merenda</h1>
@@ -357,15 +392,10 @@
         <strong>Benefici salutistici:</strong><br>
         Rinfrescante, idratante e ricca di vitamina C, ideale per stimolare il metabolismo nel pomeriggio.
       </p>
-      <p>
-        <strong>Possibili controindicazioni:</strong><br>
-        Chi deve limitare l’apporto di zuccheri o ha problemi di glicemia dovrebbe consumarla con moderazione.
-      </p>
       <button class="back-button" onclick="showPage('menu')">Torna al Menù</button>
     </div>
   </section>
-  
-  <!-- CENA DETAIL -->
+
   <section id="cena" class="page">
     <div class="detail-container">
       <h1>Cena</h1>
@@ -385,10 +415,8 @@
       <button class="back-button" onclick="showPage('menu')">Torna al Menù</button>
     </div>
   </section>
-  
-  <!-- JavaScript: Navigazione tra le "pagine" e Collapsible -->
+
   <script>
-    // Funzione per mostrare una pagina e nascondere le altre
     function showPage(pageId) {
       var pages = document.getElementsByClassName('page');
       for (var i = 0; i < pages.length; i++) {
@@ -398,7 +426,6 @@
       window.scrollTo(0, 0);
     }
     
-    // Funzionalità Collapsible (solo nella sezione Menu)
     var coll = document.getElementsByClassName("collapsible");
     for (var i = 0; i < coll.length; i++) {
       coll[i].addEventListener("click", function() {
